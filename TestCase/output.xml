@@ -1,136 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.2.1 (Python 3.8.2 on win32)" generated="20200607 15:03:17.488" rpa="false">
-<suite id="s1" name="Tc2 Post Resquest" source="C:\Users\elsys\Documents\pycharm_robot\rest_api\TestCase\tc2_post_resquest.robot">
-<test id="s1-t1" name="put_customer_resgistration">
+<robot generator="Robot 3.2.1 (Python 3.8.2 on win32)" generated="20200614 15:51:32.508" rpa="false">
+<suite id="s1" name="TC5 complex validation" source="C:\Users\elsys\Documents\pycharm_robot\rest_api\TestCase\TC5_complex_validation.robot">
+<test id="s1-t1" name="get_countryinfo">
 <kw name="Create Session" library="RequestsLibrary">
 <doc>Create Session: create a HTTP session to a server</doc>
 <arguments>
 <arg>mysession</arg>
 <arg>${base_url}</arg>
 </arguments>
-<msg timestamp="20200607 15:03:17.599" level="INFO">Creating Session using : alias=mysession, url=http://restapi.demoqa.com/customer, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20200607 15:03:17.598" endtime="20200607 15:03:17.599"></status>
+<msg timestamp="20200614 15:51:32.700" level="INFO">Creating Session using : alias=mysession, url=https://restcountries.eu/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200614 15:51:32.699" endtime="20200614 15:51:32.700"></status>
 </kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<arguments>
-<arg>FirstName=vini2</arg>
-<arg>LastName=pinho2</arg>
-<arg>UserName=testeuser2</arg>
-<arg>Password=david12342</arg>
-<arg>Email=david1234652@gmail.com</arg>
-</arguments>
-<assign>
-<var>${body}</var>
-</assign>
-<msg timestamp="20200607 15:03:17.600" level="INFO">${body} = {'FirstName': 'vini2', 'LastName': 'pinho2', 'UserName': 'testeuser2', 'Password': 'david12342', 'Email': 'david1234652@gmail.com'}</msg>
-<status status="PASS" starttime="20200607 15:03:17.599" endtime="20200607 15:03:17.600"></status>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<arguments>
-<arg>Content-Type=application/json</arg>
-</arguments>
-<assign>
-<var>${header}</var>
-</assign>
-<msg timestamp="20200607 15:03:17.600" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
-<status status="PASS" starttime="20200607 15:03:17.600" endtime="20200607 15:03:17.600"></status>
-</kw>
-<kw name="Post Request" library="RequestsLibrary">
-<doc>Send a POST request on the session object found using the
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the
 given `alias`</doc>
 <arguments>
 <arg>mysession</arg>
-<arg>/register</arg>
-<arg>data=${body}</arg>
-<arg>headers=${header}</arg>
+<arg>${relative_url}</arg>
 </arguments>
 <assign>
-<var>${response}</var>
+<var>${response_get}</var>
 </assign>
-<msg timestamp="20200607 15:03:18.804" level="INFO">POST Request : url=http://restapi.demoqa.com/customer/register 
- path_url=/customer/register 
- headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '131'} 
- body={"FirstName": "vini2", "LastName": "pinho2", "UserName": "testeuser2", "Password": "david12342", "Email": "david1234652@gmail.com"} 
+<msg timestamp="20200614 15:51:33.298" level="INFO">GET Request : url=https://restcountries.eu//rest/v2/alpha/IN 
+ path_url=//rest/v2/alpha/IN 
+ headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
  </msg>
-<msg timestamp="20200607 15:03:18.804" level="INFO">POST Response : url=http://restapi.demoqa.com/customer/register 
- status=201, reason=Created 
- body={
-    "SuccessCode": "OPERATION_SUCCESS",
-    "Message": "Operation completed successfully"
-} 
+<msg timestamp="20200614 15:51:33.298" level="INFO">GET Response : url=https://restcountries.eu//rest/v2/alpha/IN 
+ status=200, reason= 
+ body={"name":"India","topLevelDomain":[".in"],"alpha2Code":"IN","alpha3Code":"IND","callingCodes":["91"],"capital":"New Delhi","altSpellings":["IN","Bhārat","Republic of India","Bharat Ganrajya"],"region":"Asia","subregion":"Southern Asia","population":1295210000,"latlng":[20.0,77.0],"demonym":"Indian","area":3287590.0,"gini":33.4,"timezones":["UTC+05:30"],"borders":["AFG","BGD","BTN","MMR","CHN","NPL","PAK","LKA"],"nativeName":"भारत","numericCode":"356","currencies":[{"code":"INR","name":"Indian rupee","symbol":"₹"}],"languages":[{"iso639_1":"hi","iso639_2":"hin","name":"Hindi","nativeName":"हिन्दी"},{"iso639_1":"en","iso639_2":"eng","name":"English","nativeName":"English"}],"translations":{"de":"Indien","es":"India","fr":"Inde","ja":"インド","it":"India","br":"Índia","pt":"Índia","nl":"India","hr":"Indija","fa":"هند"},"flag":"https://restcountries.eu/data/ind.svg","regionalBlocs":[{"acronym":"SAARC","name":"South Asian Association for Regional Cooperation","otherAcronyms":[],"otherNames":[]}],"cioc":"IND"} 
  </msg>
-<msg timestamp="20200607 15:03:18.804" level="INFO">${response} = &lt;Response [201]&gt;</msg>
-<status status="PASS" starttime="20200607 15:03:17.601" endtime="20200607 15:03:18.804"></status>
+<msg timestamp="20200614 15:51:33.298" level="INFO">c:\users\elsys\documents\pycharm_robot\rest_api\venv\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restcountries.eu'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20200614 15:51:33.299" level="INFO">${response_get} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200614 15:51:32.700" endtime="20200614 15:51:33.299"></status>
+</kw>
+<kw name="To Json" library="RequestsLibrary">
+<doc>Convert a string to a JSON object</doc>
+<arguments>
+<arg>${response_get.content}</arg>
+</arguments>
+<assign>
+<var>${country_name}</var>
+</assign>
+<msg timestamp="20200614 15:51:33.300" level="INFO">To JSON using : content={"name":"India","topLevelDomain":[".in"],"alpha2Code":"IN","alpha3Code":"IND","callingCodes":["91"],"capital":"New Delhi","altSpellings":["IN","Bhārat","Republic of India","Bharat Ganrajya"],"region":"Asia","subregion":"Southern Asia","population":1295210000,"latlng":[20.0,77.0],"demonym":"Indian","area":3287590.0,"gini":33.4,"timezones":["UTC+05:30"],"borders":["AFG","BGD","BTN","MMR","CHN","NPL","PAK","LKA"],"nativeName":"भारत","numericCode":"356","currencies":[{"code":"INR","name":"Indian rupee","symbol":"₹"}],"languages":[{"iso639_1":"hi","iso639_2":"hin","name":"Hindi","nativeName":"हिन्दी"},{"iso639_1":"en","iso639_2":"eng","name":"English","nativeName":"English"}],"translations":{"de":"Indien","es":"India","fr":"Inde","ja":"インド","it":"India","br":"Índia","pt":"Índia","nl":"India","hr":"Indija","fa":"هند"},"flag":"https://restcountries.eu/data/ind.svg","regionalBlocs":[{"acronym":"SAARC","name":"South Asian Association for Regional Cooperation","otherAcronyms":[],"otherNames":[]}],"cioc":"IND"} </msg>
+<msg timestamp="20200614 15:51:33.301" level="INFO">To JSON using : pretty_print=False </msg>
+<msg timestamp="20200614 15:51:33.301" level="INFO">${country_name} = {'name': 'India', 'topLevelDomain': ['.in'], 'alpha2Code': 'IN', 'alpha3Code': 'IND', 'callingCodes': ['91'], 'capital': 'New Delhi', 'altSpellings': ['IN', 'Bhārat', 'Republic of India', 'Bharat Ganr...</msg>
+<status status="PASS" starttime="20200614 15:51:33.300" endtime="20200614 15:51:33.301"></status>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<doc>Get Value From JSON using JSONPath</doc>
+<arguments>
+<arg>${country_name}</arg>
+<arg>$.name</arg>
+</arguments>
+<assign>
+<var>${country_get_from_lis}</var>
+</assign>
+<msg timestamp="20200614 15:51:33.324" level="INFO">${country_get_from_lis} = ['India']</msg>
+<status status="PASS" starttime="20200614 15:51:33.301" endtime="20200614 15:51:33.324"></status>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <doc>Logs the given message to the console.</doc>
 <arguments>
-<arg>${response.status_code}</arg>
+<arg>${country_get_from_lis[0]}</arg>
 </arguments>
-<status status="PASS" starttime="20200607 15:03:18.804" endtime="20200607 15:03:18.805"></status>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<doc>Logs the given message to the console.</doc>
-<arguments>
-<arg>${response.content}</arg>
-</arguments>
-<status status="PASS" starttime="20200607 15:03:18.806" endtime="20200607 15:03:18.806"></status>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<doc>Converts the given item to a Unicode string.</doc>
-<arguments>
-<arg>${response.content}</arg>
-</arguments>
-<assign>
-<var>${res_body}</var>
-</assign>
-<msg timestamp="20200607 15:03:18.807" level="INFO">${res_body} = {
-    "SuccessCode": "OPERATION_SUCCESS",
-    "Message": "Operation completed successfully"
-}</msg>
-<status status="PASS" starttime="20200607 15:03:18.806" endtime="20200607 15:03:18.807"></status>
-</kw>
-<kw name="Should Contain" library="BuiltIn">
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<arguments>
-<arg>${res_body}</arg>
-<arg>OPERATION_SUCCESS</arg>
-</arguments>
-<status status="PASS" starttime="20200607 15:03:18.807" endtime="20200607 15:03:18.807"></status>
-</kw>
-<kw name="Should Contain" library="BuiltIn">
-<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<arguments>
-<arg>${res_body}</arg>
-<arg>Operation completed successfully</arg>
-</arguments>
-<status status="PASS" starttime="20200607 15:03:18.807" endtime="20200607 15:03:18.807"></status>
-</kw>
-<kw name="Convert To String" library="BuiltIn">
-<doc>Converts the given item to a Unicode string.</doc>
-<arguments>
-<arg>${response.status_code}</arg>
-</arguments>
-<assign>
-<var>${status_code}</var>
-</assign>
-<msg timestamp="20200607 15:03:18.808" level="INFO">${status_code} = 201</msg>
-<status status="PASS" starttime="20200607 15:03:18.808" endtime="20200607 15:03:18.808"></status>
+<status status="PASS" starttime="20200614 15:51:33.325" endtime="20200614 15:51:33.326"></status>
 </kw>
 <kw name="Should Be Equal" library="BuiltIn">
 <doc>Fails if the given objects are unequal.</doc>
 <arguments>
-<arg>${status_code}</arg>
-<arg>201</arg>
+<arg>${country_get_from_lis[0]}</arg>
+<arg>India</arg>
 </arguments>
-<status status="PASS" starttime="20200607 15:03:18.808" endtime="20200607 15:03:18.808"></status>
+<status status="PASS" starttime="20200614 15:51:33.326" endtime="20200614 15:51:33.326"></status>
 </kw>
-<status status="PASS" starttime="20200607 15:03:17.598" endtime="20200607 15:03:18.808" critical="yes"></status>
+<status status="PASS" starttime="20200614 15:51:32.699" endtime="20200614 15:51:33.327" critical="yes"></status>
 </test>
 <doc>Suite description</doc>
-<status status="PASS" starttime="20200607 15:03:17.489" endtime="20200607 15:03:18.809"></status>
+<status status="PASS" starttime="20200614 15:51:32.510" endtime="20200614 15:51:33.327"></status>
 </suite>
 <statistics>
 <total>
@@ -140,7 +88,7 @@ given `alias`</doc>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" id="s1" name="Tc2 Post Resquest">Tc2 Post Resquest</stat>
+<stat pass="1" fail="0" id="s1" name="TC5 complex validation">TC5 complex validation</stat>
 </suite>
 </statistics>
 <errors>
