@@ -23,3 +23,19 @@ get_countryinfo
     ${country_get_from_lis}     get value from json     ${country_name}     $.name
     log to console      ${country_get_from_lis[0]}
     should be equal      ${country_get_from_lis[0]}    India
+
+
+    #single data validation in array
+    ${country_get_from_lis_border}     get value from json     ${country_name}     $.borders[0]
+    log to console      ${country_get_from_lis_border[0]}
+    should be equal      ${country_get_from_lis_border[0]}    AFG
+
+    #multiple data validation in array
+    ${country_get_from_lis_border_all}     get value from json     ${country_name}     $.borders
+    log to console      ${country_get_from_lis_border_all[0]}
+    should contain any      ${country_get_from_lis_border_all[0]}    AFG    BGD     BTN     CHN     NPL
+
+
+
+
+
