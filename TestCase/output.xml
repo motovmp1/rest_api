@@ -1,142 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.2.1 (Python 3.8.2 on win32)" generated="20200614 20:15:06.479" rpa="false">
-<suite id="s1" name="TC5 complex validation" source="C:\Users\elsys\Documents\pycharm_robot\rest_api\TestCase\TC5_complex_validation.robot">
-<test id="s1-t1" name="get_countryinfo">
+<robot generator="Robot 3.2.1 (Python 3.8.2 on win32)" generated="20200625 01:24:36.322" rpa="false">
+<suite id="s1" name="Ame Post" source="C:\Users\elsys\Documents\pycharm_robot\rest_api\TestCase\ame_post.robot">
+<test id="s1-t1" name="Post_create_employee">
 <kw name="Create Session" library="RequestsLibrary">
 <doc>Create Session: create a HTTP session to a server</doc>
 <arguments>
 <arg>mysession</arg>
-<arg>${base_url}</arg>
+<arg>${basic_url}</arg>
 </arguments>
-<msg timestamp="20200614 20:15:06.679" level="INFO">Creating Session using : alias=mysession, url=https://restcountries.eu/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20200614 20:15:06.678" endtime="20200614 20:15:06.679"></status>
+<msg timestamp="20200625 01:24:36.516" level="INFO">Creating Session using : alias=mysession, url=http://dummy.restapiexample.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200625 01:24:36.515" endtime="20200625 01:24:36.516"></status>
 </kw>
-<kw name="Get Request" library="RequestsLibrary">
-<doc>Send a GET request on the session object found using the
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>name=Vinicius Miranda de Pinho</arg>
+<arg>salary=100.000</arg>
+<arg>age=42</arg>
+</arguments>
+<assign>
+<var>${body}</var>
+</assign>
+<msg timestamp="20200625 01:24:36.517" level="INFO">${body} = {'name': 'Vinicius Miranda de Pinho', 'salary': '100.000', 'age': '42'}</msg>
+<status status="PASS" starttime="20200625 01:24:36.516" endtime="20200625 01:24:36.517"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>Content-Type=application/json</arg>
+<arg>User-Agent=Firefox</arg>
+</arguments>
+<assign>
+<var>${header}</var>
+</assign>
+<msg timestamp="20200625 01:24:36.517" level="INFO">${header} = {'Content-Type': 'application/json', 'User-Agent': 'Firefox'}</msg>
+<status status="PASS" starttime="20200625 01:24:36.517" endtime="20200625 01:24:36.517"></status>
+</kw>
+<kw name="Post Request" library="RequestsLibrary">
+<doc>Send a POST request on the session object found using the
 given `alias`</doc>
 <arguments>
 <arg>mysession</arg>
-<arg>${relative_url}</arg>
+<arg>/api/v1/create</arg>
+<arg>data=${body}</arg>
+<arg>headers=${header}</arg>
 </arguments>
 <assign>
-<var>${response_get}</var>
+<var>${response}</var>
 </assign>
-<msg timestamp="20200614 20:15:07.186" level="INFO">GET Request : url=https://restcountries.eu//rest/v2/alpha/IN 
- path_url=//rest/v2/alpha/IN 
- headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
+<msg timestamp="20200625 01:24:39.289" level="INFO">POST Request : url=http://dummy.restapiexample.com/api/v1/create 
+ path_url=/api/v1/create 
+ headers={'User-Agent': 'Firefox', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '71'} 
+ body={"name": "Vinicius Miranda de Pinho", "salary": "100.000", "age": "42"} 
  </msg>
-<msg timestamp="20200614 20:15:07.186" level="INFO">GET Response : url=https://restcountries.eu//rest/v2/alpha/IN 
- status=200, reason= 
- body={"name":"India","topLevelDomain":[".in"],"alpha2Code":"IN","alpha3Code":"IND","callingCodes":["91"],"capital":"New Delhi","altSpellings":["IN","Bhārat","Republic of India","Bharat Ganrajya"],"region":"Asia","subregion":"Southern Asia","population":1295210000,"latlng":[20.0,77.0],"demonym":"Indian","area":3287590.0,"gini":33.4,"timezones":["UTC+05:30"],"borders":["AFG","BGD","BTN","MMR","CHN","NPL","PAK","LKA"],"nativeName":"भारत","numericCode":"356","currencies":[{"code":"INR","name":"Indian rupee","symbol":"₹"}],"languages":[{"iso639_1":"hi","iso639_2":"hin","name":"Hindi","nativeName":"हिन्दी"},{"iso639_1":"en","iso639_2":"eng","name":"English","nativeName":"English"}],"translations":{"de":"Indien","es":"India","fr":"Inde","ja":"インド","it":"India","br":"Índia","pt":"Índia","nl":"India","hr":"Indija","fa":"هند"},"flag":"https://restcountries.eu/data/ind.svg","regionalBlocs":[{"acronym":"SAARC","name":"South Asian Association for Regional Cooperation","otherAcronyms":[],"otherNames":[]}],"cioc":"IND"} 
+<msg timestamp="20200625 01:24:39.289" level="INFO">POST Response : url=http://dummy.restapiexample.com/api/v1/create 
+ status=200, reason=OK 
+ body={"status":"success","data":{"name":"Vinicius Miranda de Pinho","salary":"100.000","age":"42","id":78}} 
  </msg>
-<msg timestamp="20200614 20:15:07.186" level="INFO">c:\users\elsys\documents\pycharm_robot\rest_api\venv\lib\site-packages\urllib3\connectionpool.py:979: InsecureRequestWarning: Unverified HTTPS request is being made to host 'restcountries.eu'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20200614 20:15:07.186" level="INFO">${response_get} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20200614 20:15:06.679" endtime="20200614 20:15:07.186"></status>
-</kw>
-<kw name="To Json" library="RequestsLibrary">
-<doc>Convert a string to a JSON object</doc>
-<arguments>
-<arg>${response_get.content}</arg>
-</arguments>
-<assign>
-<var>${country_name}</var>
-</assign>
-<msg timestamp="20200614 20:15:07.187" level="INFO">To JSON using : content={"name":"India","topLevelDomain":[".in"],"alpha2Code":"IN","alpha3Code":"IND","callingCodes":["91"],"capital":"New Delhi","altSpellings":["IN","Bhārat","Republic of India","Bharat Ganrajya"],"region":"Asia","subregion":"Southern Asia","population":1295210000,"latlng":[20.0,77.0],"demonym":"Indian","area":3287590.0,"gini":33.4,"timezones":["UTC+05:30"],"borders":["AFG","BGD","BTN","MMR","CHN","NPL","PAK","LKA"],"nativeName":"भारत","numericCode":"356","currencies":[{"code":"INR","name":"Indian rupee","symbol":"₹"}],"languages":[{"iso639_1":"hi","iso639_2":"hin","name":"Hindi","nativeName":"हिन्दी"},{"iso639_1":"en","iso639_2":"eng","name":"English","nativeName":"English"}],"translations":{"de":"Indien","es":"India","fr":"Inde","ja":"インド","it":"India","br":"Índia","pt":"Índia","nl":"India","hr":"Indija","fa":"هند"},"flag":"https://restcountries.eu/data/ind.svg","regionalBlocs":[{"acronym":"SAARC","name":"South Asian Association for Regional Cooperation","otherAcronyms":[],"otherNames":[]}],"cioc":"IND"} </msg>
-<msg timestamp="20200614 20:15:07.187" level="INFO">To JSON using : pretty_print=False </msg>
-<msg timestamp="20200614 20:15:07.187" level="INFO">${country_name} = {'name': 'India', 'topLevelDomain': ['.in'], 'alpha2Code': 'IN', 'alpha3Code': 'IND', 'callingCodes': ['91'], 'capital': 'New Delhi', 'altSpellings': ['IN', 'Bhārat', 'Republic of India', 'Bharat Ganr...</msg>
-<status status="PASS" starttime="20200614 20:15:07.187" endtime="20200614 20:15:07.188"></status>
-</kw>
-<kw name="Get Value From Json" library="JSONLibrary">
-<doc>Get Value From JSON using JSONPath</doc>
-<arguments>
-<arg>${country_name}</arg>
-<arg>$.name</arg>
-</arguments>
-<assign>
-<var>${country_get_from_lis}</var>
-</assign>
-<msg timestamp="20200614 20:15:07.211" level="INFO">${country_get_from_lis} = ['India']</msg>
-<status status="PASS" starttime="20200614 20:15:07.188" endtime="20200614 20:15:07.211"></status>
+<msg timestamp="20200625 01:24:39.289" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20200625 01:24:36.517" endtime="20200625 01:24:39.290"></status>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <doc>Logs the given message to the console.</doc>
 <arguments>
-<arg>${country_get_from_lis[0]}</arg>
+<arg>${response.status_code}</arg>
 </arguments>
-<status status="PASS" starttime="20200614 20:15:07.212" endtime="20200614 20:15:07.212"></status>
+<status status="PASS" starttime="20200625 01:24:39.291" endtime="20200625 01:24:39.293"></status>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>${response.json()}</arg>
+</arguments>
+<status status="PASS" starttime="20200625 01:24:39.294" endtime="20200625 01:24:39.296"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.content}</arg>
+</arguments>
+<assign>
+<var>${response_body}</var>
+</assign>
+<msg timestamp="20200625 01:24:39.298" level="INFO">${response_body} = {"status":"success","data":{"name":"Vinicius Miranda de Pinho","salary":"100.000","age":"42","id":78}}</msg>
+<status status="PASS" starttime="20200625 01:24:39.297" endtime="20200625 01:24:39.299"></status>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${response_body}=</arg>
+<arg>success</arg>
+</arguments>
+<status status="PASS" starttime="20200625 01:24:39.299" endtime="20200625 01:24:39.301"></status>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<doc>Converts the given item to a Unicode string.</doc>
+<arguments>
+<arg>${response.status_code}</arg>
+</arguments>
+<assign>
+<var>${status_code}</var>
+</assign>
+<msg timestamp="20200625 01:24:39.304" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20200625 01:24:39.302" endtime="20200625 01:24:39.304"></status>
 </kw>
 <kw name="Should Be Equal" library="BuiltIn">
 <doc>Fails if the given objects are unequal.</doc>
 <arguments>
-<arg>${country_get_from_lis[0]}</arg>
-<arg>India</arg>
+<arg>${status_code}</arg>
+<arg>200</arg>
 </arguments>
-<status status="PASS" starttime="20200614 20:15:07.212" endtime="20200614 20:15:07.213"></status>
+<status status="PASS" starttime="20200625 01:24:39.307" endtime="20200625 01:24:39.308"></status>
 </kw>
-<kw name="Get Value From Json" library="JSONLibrary">
-<doc>Get Value From JSON using JSONPath</doc>
-<arguments>
-<arg>${country_name}</arg>
-<arg>$.borders[0]</arg>
-</arguments>
-<assign>
-<var>${country_get_from_lis_border}</var>
-</assign>
-<msg timestamp="20200614 20:15:07.233" level="INFO">${country_get_from_lis_border} = ['AFG']</msg>
-<status status="PASS" starttime="20200614 20:15:07.213" endtime="20200614 20:15:07.233"></status>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<doc>Logs the given message to the console.</doc>
-<arguments>
-<arg>${country_get_from_lis_border[0]}</arg>
-</arguments>
-<status status="PASS" starttime="20200614 20:15:07.234" endtime="20200614 20:15:07.234"></status>
-</kw>
-<kw name="Should Be Equal" library="BuiltIn">
-<doc>Fails if the given objects are unequal.</doc>
-<arguments>
-<arg>${country_get_from_lis_border[0]}</arg>
-<arg>AFG</arg>
-</arguments>
-<status status="PASS" starttime="20200614 20:15:07.234" endtime="20200614 20:15:07.235"></status>
-</kw>
-<kw name="Get Value From Json" library="JSONLibrary">
-<doc>Get Value From JSON using JSONPath</doc>
-<arguments>
-<arg>${country_name}</arg>
-<arg>$.borders</arg>
-</arguments>
-<assign>
-<var>${country_get_from_lis_border_all}</var>
-</assign>
-<msg timestamp="20200614 20:15:07.254" level="INFO">${country_get_from_lis_border_all} = [['AFG', 'BGD', 'BTN', 'MMR', 'CHN', 'NPL', 'PAK', 'LKA']]</msg>
-<status status="PASS" starttime="20200614 20:15:07.235" endtime="20200614 20:15:07.254"></status>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<doc>Logs the given message to the console.</doc>
-<arguments>
-<arg>${country_get_from_lis_border_all[0]}</arg>
-</arguments>
-<status status="PASS" starttime="20200614 20:15:07.255" endtime="20200614 20:15:07.255"></status>
-</kw>
-<kw name="Should Contain Any" library="BuiltIn">
-<doc>Fails if ``container`` does not contain any of the ``*items``.</doc>
-<arguments>
-<arg>${country_get_from_lis_border_all[0]}</arg>
-<arg>AFG</arg>
-<arg>BGD</arg>
-<arg>BTN</arg>
-<arg>CHN</arg>
-<arg>NPL</arg>
-</arguments>
-<status status="PASS" starttime="20200614 20:15:07.255" endtime="20200614 20:15:07.256"></status>
-</kw>
-<status status="PASS" starttime="20200614 20:15:06.678" endtime="20200614 20:15:07.256" critical="yes"></status>
+<status status="PASS" starttime="20200625 01:24:36.515" endtime="20200625 01:24:39.309" critical="yes"></status>
 </test>
 <doc>Suite description</doc>
-<status status="PASS" starttime="20200614 20:15:06.480" endtime="20200614 20:15:07.257"></status>
+<status status="PASS" starttime="20200625 01:24:36.324" endtime="20200625 01:24:39.313"></status>
 </suite>
 <statistics>
 <total>
@@ -146,7 +125,7 @@ given `alias`</doc>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" id="s1" name="TC5 complex validation">TC5 complex validation</stat>
+<stat pass="1" fail="0" id="s1" name="Ame Post">Ame Post</stat>
 </suite>
 </statistics>
 <errors>

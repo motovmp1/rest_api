@@ -28,4 +28,3 @@ put_customer_resgistration
     ${status_code}      convert to string   ${response.status_code}
     should be equal     ${status_code}      201
 
-
